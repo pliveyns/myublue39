@@ -26,6 +26,13 @@ modules:
       - firefox # default firefox removed in favor of flatpak
       - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
 
+  - from-file: custom-packages.yml
+
+  - type: bling
+    install:
+      - dconf-update-service
+      - laptop
+
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
@@ -42,5 +49,9 @@ modules:
         # Installing different branches of the same Flatpak is not supported.
       remove:
         # - org.gnome.eog
+
+  - from-file: custom-flatpaks.yml
+
+  - from-file: custom-fonts.yml
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
